@@ -11,6 +11,7 @@ import enum
 from genericpath import exists
 
 #export csv files with UTF-8 encoding
+#test note
 
 # TO DO:
 #incorporate response time?
