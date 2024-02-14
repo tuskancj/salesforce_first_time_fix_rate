@@ -13,29 +13,29 @@ This GUI attempts to merge various Salesforce field service reports in order to 
 Salesforce for field service is often laid out in a Case -> Work Order -> Service Appointment hierarchy.  Cases are handled by a technical support department, leaving Work Orders and Service Appointments to be handled by the field engineering team and/or dispatch team.  Repairs are found on the the Work Order level, however, sometimes Case information is needed to validate that a Repair qualify for FTF Rate.
 
 ### Input reports:
-1. assets.csv
-2. contracts.csv
-3. cases.csv
-4. WOs.csv
-5. timesheets.csv
+* assets.csv
+* contracts.csv
+* cases.csv
+* WOs.csv
+* timesheets.csv
 
 ### Output files (within 'OUTPUT' folder):
-1. TBR_raw_FSE.csv -> FTF information
-2. MTBF_raw_Asset.csv -> MTBF per Asset
-3. MTBF_raw_Contracts.csv -> MTBF per Asset Service Contract Period
-4. log_main
-5. log_same_case -> situations where a Repair should not go against an FSE's FTF rate.  (more information below)
+* TBR_raw_FSE.csv -> FTF information
+* MTBF_raw_Asset.csv -> MTBF per Asset
+* MTBF_raw_Contracts.csv -> MTBF per Asset Service Contract Period
+* log_main.csv
+* log_same_case.csv -> situations where a Repair should not go against an FSE's FTF rate.  (more information below)
 
 # Further Notes About the Script
 *  The GUI will provide general guidelines regarding Salesforce report configuration
 *  Links to reports will need to be configured for specific needs
 *  Reports should be exported as '.csv' file, encoding = 'UTF-8'
-*  Data is read from the '.csv' file and stored into dictionaries of Classes
+*  Data is read from the '.csv' file and stored into dictionaries of various Class values
   * The script will need to be referenced in order to match up column headers with Class variables
 
 ### Validate your Organization's Timestamps
 * Garbage in, Garbage out.  Ensure timestamps are accurate if no stop-gaps are in-place
-* While pulling data, the script gathers the range of data by storing the earliest timestamp and the most recent timestamp.  Timeframes will reference the most recent timestamp as 'current day'
+* While pulling data, the script interprets the range of Salesforce data by storing the earliest timestamp and the most recent timestamp.  Timeframes will reference the most recent timestamp as 'current day' so it's important to ensure erroneous timesheets are not in the data (e.g. timestamps in the future)
 
 ### Time Between Repair (TBR)
 * Represented in calendar days
