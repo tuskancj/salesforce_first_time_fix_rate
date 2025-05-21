@@ -22,7 +22,11 @@ These are strictly quantitative insights that generate questions:
 
 # Overview
 
-The script utilizes a GUI that attempts to merge various Salesforce field service reports in order to obtain 3 things:
+The script utilizes a GUI that attempts to merge various Salesforce field service reports.  The idea behind the GUI was to allow a more Windows-friendly interface for other non-technical personnel to utilize.  
+
+![](/images/gui.jpg)
+
+The script attempts to obtain 3 things:
 
 1. Time until next repair for every closed Work Order - from this a 45-day first-time-fix rate can be determined
 2. Mean Time Between Failure for Assets

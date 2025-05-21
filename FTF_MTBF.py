@@ -11,10 +11,8 @@ import enum
 from genericpath import exists
 
 #export csv files with UTF-8 encoding
-#test note
 
 # TO DO:
-#incorporate response time?
 #clean up/examine logs
 #flag timesheets greater than 15 hours?
 
@@ -399,7 +397,7 @@ def findAssetTerritory(asset:Asset, methodForLogging:str)->Territory:
             log.append([methodForLogging, "territory doesn't exist for the primary FSE on asset "+asset.serialNumber+" at account "+asset.account+".  Assigning asset territory to ''.  MTBF data will be lost"])
             territory = Territory("")
     else:
-        #there are assets with incorrect primary objects assigned e.g. 'Stacy Stocki' vs 'Stacy L Stocki' on all WOs.  Need to find primary FSE based on list of WOs in this scenario
+        #there are assets with incorrect primary objects assigned.  E.g. middle initial "L" vs no middle initial.  Need to find primary FSE based on list of WOs in this scenario
         dict_possibleFSEs = dict() #key=engineer name str, value = count
         for _tempWO, index in enumerate(asset.workOrders):
             tempWO:WorkOrder = asset.workOrders[_tempWO]
